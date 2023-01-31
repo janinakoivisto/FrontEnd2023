@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Front End Development / React</title>
+  </head>
+  <body>
+    <!-- We will put our React component inside this div. -->
+    <div id="root"></div>
+
+    <!-- Load React & Babel -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <!-- Load our React component. -->
+    <script type="text/babel">
+
+   const Syote = () => {
+    const [enimi, setEnimi] = React.useState('');
+    const [snimi, setSnimi] = React.useState('');
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      alert(`Terve ${enimi} ${snimi}!`);
+    }
+    
+    return (
+        <form onSubmit={handleSubmit}>
+           
+            <div>
+            <p>Anna nimesi:</p>
+                <input type="text" value={enimi} onChange={(event) => setEnimi(event.target.value)} />
+                <input type="text" value={snimi} onChange={(event)  => setSnimi(event.target.value)} />
+            </div>
+            <div>
+                <button type="submit">Lähetä</button>
+                </div>
+                </form>
+            
+    )
+
+
+}
+
+      ReactDOM.render(<Syote />, document.getElementById("root"));
+
+    </script>
+  </body>
+</html>
